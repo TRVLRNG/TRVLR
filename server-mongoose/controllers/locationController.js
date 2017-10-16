@@ -14,7 +14,9 @@ locationController.create = (req, res) => {
 locationController.findMatches = (req, res) => {
   Location.find(req.query, (function(err, found) {
     if (found) {
+      console.log(found);
       res.send(found.map((el => el.location)));
+      
     } else {
       res.send(err);
     }
