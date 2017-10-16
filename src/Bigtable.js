@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios'
+import fetch from 'isomorphic-fetch'
+
 import Sidebar from './Sidebar.js'
 import Mainpage from './Mainpage.js'
-import axios from 'axios'
 import yelpApi from '../controllers/yelpApi'
-import fetch from 'isomorphic-fetch'
 
 var that;
 class Bigtable extends React.Component {
@@ -209,7 +210,7 @@ class Bigtable extends React.Component {
   render() {
     return (
       <div id='Bigtable'>
-        <Sidebar />
+        {/* {<Sidebar />} */}
         <Mainpage
           mention={this.state.mention}
           first={this.state.first}
