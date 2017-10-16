@@ -29,7 +29,7 @@ class Mainpage extends React.Component {
           firstpics={this.props.firstpics}
           secondpics={this.props.secondpics}
         />
-        <div id='Righthalf'>
+        {/* <div id='Righthalf'>
           {result}
           {console.log('suggestion props: ', this.props.suggestions)}
           {
@@ -37,7 +37,7 @@ class Mainpage extends React.Component {
             this.props.suggestions &&
             <Suggestions data={this.props.suggestions} />
           }
-        </div>
+        </div> */}
       </div>
     )
   }
