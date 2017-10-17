@@ -9,11 +9,11 @@ import Bigtable from './Bigtable.js';
 
 
 class RoutedComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //   };
+  // }
 
   render() {
     return (

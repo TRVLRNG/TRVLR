@@ -4,8 +4,6 @@ import axios from 'axios'
 import fetch from 'isomorphic-fetch'
 import { Link } from 'react-router-dom';
 
-
-
 import Sidebar from './Sidebar.js'
 import Mainpage from './Mainpage.js'
 import yelpApi from '../controllers/yelpApi'
@@ -33,7 +31,7 @@ class Bigtable extends React.Component {
       getit: '',
       suggestion: '',
       firstpics: 'https://www.zicasso.com/sites/default/files/styles/original_scaled_down/public/cleanup/sampletrip/Greece_Santorini_Tour_Stairs_in_Santorini.jpg',
-      secondpics: 'https://wallpapertag.com/wallpaper/middle/3/3/f/240898-vertical-las-vegas-wallpaper-1080x1920-notebook.jpg',
+      secondpics: 'https://images.unsplash.com/photo-1429823040067-2c31b1d637ae',
     };
     this.toggler = this.toggler.bind(this)
     this.toggle = this.toggle.bind(this)
@@ -185,8 +183,8 @@ class Bigtable extends React.Component {
         {
           saveit: { ...this.state.saveit, "wine": true },
           mention: 'Thank you!',
-          first: 'thanks',
-          second: 'thanks',
+          first: '',
+          second: '',
           firstpics: "http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg",
           secondpics: "http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg"
         })
@@ -213,7 +211,7 @@ class Bigtable extends React.Component {
   render() {
     return (
       <div id='Bigtable'>
-        <Link to='/Recommendation'>HERE</Link>
+        {/* <Link to='/Recommendation'>HERE</Link> */}
         {/* {<Sidebar />} */}
         <Mainpage
           mention={this.state.mention}
