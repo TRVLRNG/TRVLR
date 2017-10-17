@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
 import fetch from 'isomorphic-fetch'
+import { Link } from 'react-router-dom';
+
+
 
 import Sidebar from './Sidebar.js'
 import Mainpage from './Mainpage.js'
@@ -210,6 +213,7 @@ class Bigtable extends React.Component {
   render() {
     return (
       <div id='Bigtable'>
+        <Link to='/Recommendation'>HERE</Link>
         {/* {<Sidebar />} */}
         <Mainpage
           mention={this.state.mention}

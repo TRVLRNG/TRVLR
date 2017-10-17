@@ -10,7 +10,11 @@
   },
   "author": "Team Wind",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "material-ui": "^0.19.4",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
   "devDependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
