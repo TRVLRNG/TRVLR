@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
-class Sidebar extends React.Component {
-  
+class Sidebar extends React.Component {  
   render() {
     return (
       <div id='Sidebar'>
@@ -18,8 +17,9 @@ class Sidebar extends React.Component {
       <ul className ="navi">Privacy</ul>
     </li>
 
-     </div>     
-   )
- }
+
+      </div>
+    )
+  }
 }
 export default Sidebar;
