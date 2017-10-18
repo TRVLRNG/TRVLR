@@ -11,9 +11,10 @@ const yelpApi = require('./controllers/yelpApi');
 const userController = require('./server-mongoose/controllers/userController');
 
 
-
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://pinkfairyarmadillo:pinkfairyarmadillo@ds121535.mlab.com:21535/pinkfairyarmadillo');
+
+
 mongoose.connection.once('open', (err, success) => {
   if (err) console.log('NOOOOOOOO');
   console.log('CONNECTED YAYYYYY');
@@ -33,6 +34,9 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
 app.use(bodyParser.json())
+
+app.use(cookieParser())
+
 const compiler = webpack(webpackConfig);
 
 app.use(express.static(__dirname + '/www'));

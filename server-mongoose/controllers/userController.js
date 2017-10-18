@@ -18,6 +18,9 @@ userController.createUser = (req, res) => {
                     if (err) {
                         res.send(err);
                     } else {
+                        console.log(doc._id)
+                        res.cookie('USERID', doc._id)
+
                         res.send(doc);
                     }
                 });
@@ -38,12 +41,15 @@ userController.createUser = (req, res) => {
     // }
 }
 userController.login = (req,res) => {
-    User.findOne({username:req.body.username, password:req.body.password}, function(err,find) {
+    User.findOne(
+        {username:req.body.username, password:req.body.password}, function(err,find) {
         if(err) {
-            console.log("dv err", err)
             res.send(err)
         }
         if(find) {
+            res.cookie('USERID', find._id)            
+
+
             res.send(find)
         }
         if(!find) {
