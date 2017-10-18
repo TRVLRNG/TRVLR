@@ -4,14 +4,16 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const app = express();
-
 const mongoose = require('mongoose');
 const Location = require('./server-mongoose/models/locationModel');
 const locationController = require('./server-mongoose/controllers/locationController');
 const yelpApi = require('./controllers/yelpApi');
+const userController = require('./server-mongoose/controllers/userController');
+
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://teamwind:teamwind@ds119585.mlab.com:19585/trvlr');
+mongoose.connect('mongodb://pinkfairyarmadillo:pinkfairyarmadillo@ds121535.mlab.com:21535/pinkfairyarmadillo');
+
 mongoose.connection.once('open', (err, success) => {
   if (err) console.log('NOOOOOOOO');
   console.log('CONNECTED YAYYYYY');
@@ -30,9 +32,10 @@ mongoose.connection.once('open', (err, success) => {
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
- 
+app.use(bodyParser.json())
+app.use(cookieParser())
+
 const compiler = webpack(webpackConfig);
- 
 app.use(express.static(__dirname + '/www'));
  
 app.use(webpackDevMiddleware(compiler, {
@@ -54,6 +57,8 @@ app.use(function (req, res, next){
 app.get('/query', locationController.findMatches);
 app.post('/creating', locationController.create);
 app.get('/yelpdata:location', yelpApi.sendYelpReq);
+app.post('/createuser', userController.createUser);
+app.post('/login' , userController.login);
 
 const server = app.listen(3000, function() {
   const port = server.address().port;
