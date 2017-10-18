@@ -15,6 +15,7 @@ class Bigtable extends React.Component {
     super(props);
     this.state = {
       mention: 'Pick',
+      selection: [],
       first: 'international',
       second: 'domestic',
       saveit:
@@ -37,6 +38,11 @@ class Bigtable extends React.Component {
     this.toggle = this.toggle.bind(this)
     this.suggest = this.suggest.bind(this)
   }
+
+  
+
+
+
   //SUGGEST FUNC SENDS REQUEST TO YELP API THROUGH YELP ROUTE
   suggest(loc) {
     that = this;
@@ -62,6 +68,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "domestic": true },
+          // selection: this.state.selection.push('Domestic'),
           first: 'cultural',
           second: 'outdoors',
           firstpics: 'https://i.pinimg.com/564x/3a/94/6e/3a946e1c59d1ba81748bd34c2b44a93d--paris-louvre-le-louvre.jpg',
@@ -72,6 +79,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "outdoors": true },
+          // selection: this.state.selection.push('Outdoors'),          
           first: 'warm',
           second: 'cold',
           firstpics: 'http://40.media.tumblr.com/7085a89f414bbacc99c5304711181092/tumblr_nsh92oLqhF1ro3fdho1_500.jpg',
@@ -94,8 +102,8 @@ class Bigtable extends React.Component {
           saveit: { ...this.state.saveit, "beer": true },
 
           mention: 'You should travel to...',
-          first: 'thanks',
-          second: 'thanks',
+          first: '',
+          second: '',
           firstpics: 'http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg',
           secondpics: 'http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg'
 
@@ -209,12 +217,15 @@ class Bigtable extends React.Component {
   }
 
   render() {
+    console.log(this.state.selection);
+
     return (
       <div id='Bigtable'>
         {/* <Link to='/Recommendation'>HERE</Link> */}
         {/* {<Sidebar />} */}
         <Mainpage
           mention={this.state.mention}
+          selection={this.state.selection}
           first={this.state.first}
           second={this.state.second}
           toggle={this.toggle}

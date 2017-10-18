@@ -65,7 +65,7 @@ body {
     height:50px;
 }
 .picone {
-    width:40%;
+    width:49%;
     height:auto;
     float:left;
     cursor: hand;
@@ -85,7 +85,7 @@ body {
     /* display:block; */
 }
 .pictwo {
-    width:40%;
+    width:49%;
     height: auto;
     float: right;
     height:100%;
@@ -103,7 +103,7 @@ body {
     font-family: sans-serif;    
     color:#919191;
     text-align:center;
-    margin-top:295px;
+    margin-top:10px;
 
     }
 .imgfirst{
