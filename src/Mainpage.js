@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Threeimgs from './Threeimgs.js';
-import Suggestions from './Suggestions.js';
+// import Suggestions from './Suggestions.js';
 
 class Mainpage extends React.Component {
 
@@ -32,6 +32,7 @@ class Mainpage extends React.Component {
           firstpics={this.props.firstpics}
           secondpics={this.props.secondpics}
         />
+
         {/* <div id='Righthalf'>
           {result}
           {console.log('suggestion props: ', this.props.suggestions)}
