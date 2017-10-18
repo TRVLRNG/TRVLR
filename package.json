@@ -11,9 +11,11 @@
   "author": "Team Wind",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "material-ui": "^0.19.4",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
     "axios": "^0.16.2",

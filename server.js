@@ -14,6 +14,7 @@ const userController = require('./server-mongoose/controllers/userController');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://pinkfairyarmadillo:pinkfairyarmadillo@ds121535.mlab.com:21535/pinkfairyarmadillo');
 
+
 mongoose.connection.once('open', (err, success) => {
   if (err) console.log('NOOOOOOOO');
   console.log('CONNECTED YAYYYYY');
@@ -33,11 +34,13 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
 app.use(bodyParser.json())
+
 app.use(cookieParser())
 
 const compiler = webpack(webpackConfig);
+
 app.use(express.static(__dirname + '/www'));
- 
+
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
   filename: 'bundle.js',
@@ -48,7 +51,7 @@ app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
-app.use(function (req, res, next){
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -60,7 +63,8 @@ app.get('/yelpdata:location', yelpApi.sendYelpReq);
 app.post('/createuser', userController.createUser);
 app.post('/login' , userController.login);
 
-const server = app.listen(3000, function() {
+
+const server = app.listen(3000, function () {
   const port = server.address().port;
   console.log('listening at port', port);
 });

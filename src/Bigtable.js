@@ -4,9 +4,14 @@ import axios from 'axios'
 import fetch from 'isomorphic-fetch'
 import { Link } from 'react-router-dom';
 
-import Sidebar from './Sidebar.js'
 import Mainpage from './Mainpage.js'
 import yelpApi from '../controllers/yelpApi'
+
+
+// Material UI
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import DrawerOpenRight from './DrawerOpenRight.js'
+
 
 var that;
 class Bigtable extends React.Component {
@@ -15,7 +20,7 @@ class Bigtable extends React.Component {
     super(props);
     this.state = {
       mention: 'Pick',
-      selection: [],
+      selection: ['SELECTION:'],
       first: 'international',
       second: 'domestic',
       saveit:
@@ -33,6 +38,7 @@ class Bigtable extends React.Component {
       suggestion: '',
       firstpics: 'https://www.zicasso.com/sites/default/files/styles/original_scaled_down/public/cleanup/sampletrip/Greece_Santorini_Tour_Stairs_in_Santorini.jpg',
       secondpics: 'https://images.unsplash.com/photo-1429823040067-2c31b1d637ae',
+      opendrawer: false
     };
     this.toggler = this.toggler.bind(this)
     this.toggle = this.toggle.bind(this)
@@ -68,7 +74,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "domestic": true },
-          // selection: this.state.selection.push('Domestic'),
+          selection: [...this.state.selection, 'Domestic'],
           first: 'cultural',
           second: 'outdoors',
           firstpics: 'https://i.pinimg.com/564x/3a/94/6e/3a946e1c59d1ba81748bd34c2b44a93d--paris-louvre-le-louvre.jpg',
@@ -79,7 +85,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "outdoors": true },
-          // selection: this.state.selection.push('Outdoors'),          
+          selection: [...this.state.selection, 'Outdoors'],         
           first: 'warm',
           second: 'cold',
           firstpics: 'http://40.media.tumblr.com/7085a89f414bbacc99c5304711181092/tumblr_nsh92oLqhF1ro3fdho1_500.jpg',
@@ -90,6 +96,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "cold": true },
+          selection: [...this.state.selection, 'Cold'],          
           first: 'wine',
           second: 'beer',
           firstpics: 'https://www.homemadeinterest.com/wp-content/uploads/2015/11/Wine-Pairing-Party_vertical-wine-bottles.jpg',
@@ -100,7 +107,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "beer": true },
-
+          selection: [...this.state.selection, 'Beer'],          
           mention: 'You should travel to...',
           first: '',
           second: '',
@@ -136,6 +143,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "international": true },
+          selection: [...this.state.selection, 'International'],          
           first: 'cultural',
           second: 'outdoors',
           firstpics: 'https://i.pinimg.com/564x/3a/94/6e/3a946e1c59d1ba81748bd34c2b44a93d--paris-louvre-le-louvre.jpg',
@@ -147,6 +155,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, 'cultural': true },
+          selection: [...this.state.selection, 'Culteral'],          
           first: 'warm',
           second: 'cold',
           firstpics: 'http://40.media.tumblr.com/7085a89f414bbacc99c5304711181092/tumblr_nsh92oLqhF1ro3fdho1_500.jpg',
@@ -157,6 +166,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, 'warm': true },
+          selection: [...this.state.selection, 'Warm'],          
           first: 'wine',
           second: 'beer',
           firstpics: 'https://www.homemadeinterest.com/wp-content/uploads/2015/11/Wine-Pairing-Party_vertical-wine-bottles.jpg',
@@ -167,6 +177,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "wine": true },
+          selection: [...this.state.selection, 'Wine'],          
           mention: 'You should travel to...',
           first: 'thanks',
           second: 'thanks',
@@ -221,11 +232,8 @@ class Bigtable extends React.Component {
 
     return (
       <div id='Bigtable'>
-        {/* <Link to='/Recommendation'>HERE</Link> */}
-        {/* {<Sidebar />} */}
         <Mainpage
           mention={this.state.mention}
-          selection={this.state.selection}
           first={this.state.first}
           second={this.state.second}
           toggle={this.toggle}
@@ -236,6 +244,8 @@ class Bigtable extends React.Component {
           suggest={this.suggest}
           suggestions={this.state.suggestion}
         />
+        <DrawerOpenRight selection={this.state.selection}/>
+
       </div>
     )
   }

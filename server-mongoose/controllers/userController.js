@@ -20,6 +20,7 @@ userController.createUser = (req, res) => {
                     } else {
                         console.log(doc._id)
                         res.cookie('USERID', doc._id)
+
                         res.send(doc);
                     }
                 });
@@ -47,6 +48,8 @@ userController.login = (req,res) => {
         }
         if(find) {
             res.cookie('USERID', find._id)            
+
+
             res.send(find)
         }
         if(!find) {
