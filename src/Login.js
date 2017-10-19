@@ -38,10 +38,13 @@ render() {
     return (
       <div>
         <MuiThemeProvider>
-          <div>
+        
+          <div className ='loginn'>
           <AppBar
              title="Login"
            />
+           <img id="logo" src="https://i.imgur.com/YxdF5tM.png"/>
+           <br></br>
            <TextField
              hintText="Enter your Username"
              floatingLabelText="Username"

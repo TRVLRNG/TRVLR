@@ -77,8 +77,8 @@ class Bigtable extends React.Component {
           selection: [...this.state.selection, 'Domestic'],
           first: 'cultural',
           second: 'outdoors',
-          firstpics: 'https://i.pinimg.com/564x/3a/94/6e/3a946e1c59d1ba81748bd34c2b44a93d--paris-louvre-le-louvre.jpg',
-          secondpics: 'http://37.media.tumblr.com/3dee2844ff514e61a853c7a4e8dc7afa/tumblr_nag86fNEz11rub0hvo1_500.png'
+          firstpics: 'https://images.unsplash.com/photo-1496393572465-93db1206b7c5',
+          secondpics: 'https://images.unsplash.com/photo-1501028932887-da5de53af865'
         })
     }
     if (this.state.second === 'outdoors') {
@@ -88,7 +88,7 @@ class Bigtable extends React.Component {
           selection: [...this.state.selection, 'Outdoors'],         
           first: 'warm',
           second: 'cold',
-          firstpics: 'http://40.media.tumblr.com/7085a89f414bbacc99c5304711181092/tumblr_nsh92oLqhF1ro3fdho1_500.jpg',
+          firstpics: 'https://images.unsplash.com/photo-1505388944068-75420a859303',
           secondpics: 'https://i.pinimg.com/736x/48/5e/23/485e2315368eacc660b9fe54ba45db1c--snow-covered-trees-winter-trees.jpg'
         })
     }
@@ -146,8 +146,8 @@ class Bigtable extends React.Component {
           selection: [...this.state.selection, 'International'],          
           first: 'cultural',
           second: 'outdoors',
-          firstpics: 'https://i.pinimg.com/564x/3a/94/6e/3a946e1c59d1ba81748bd34c2b44a93d--paris-louvre-le-louvre.jpg',
-          secondpics: 'http://37.media.tumblr.com/3dee2844ff514e61a853c7a4e8dc7afa/tumblr_nag86fNEz11rub0hvo1_500.png'
+          firstpics: 'https://images.unsplash.com/photo-1496393572465-93db1206b7c5',
+          secondpics: 'https://images.unsplash.com/photo-1501028932887-da5de53af865'
         })
 
     }
@@ -158,7 +158,7 @@ class Bigtable extends React.Component {
           selection: [...this.state.selection, 'Culteral'],          
           first: 'warm',
           second: 'cold',
-          firstpics: 'http://40.media.tumblr.com/7085a89f414bbacc99c5304711181092/tumblr_nsh92oLqhF1ro3fdho1_500.jpg',
+          firstpics: 'https://images.unsplash.com/photo-1505388944068-75420a859303',
           secondpics: 'https://i.pinimg.com/736x/48/5e/23/485e2315368eacc660b9fe54ba45db1c--snow-covered-trees-winter-trees.jpg'
         })
     }

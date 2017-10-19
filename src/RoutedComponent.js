@@ -6,7 +6,6 @@ import Login from './Login.js'
 
 import Recommendation from './Recommendation.js';
 import Bigtable from './Bigtable.js';
-import Login from './Login.js';
 
 
 class RoutedComponent extends Component {
