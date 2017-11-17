@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Bigtable from './Bigtable.js';
-import styles from '../style.css'
-import Mainpage from './Mainpage'
+import { BrowserRouter, Route } from 'react-router-dom'
 
-ReactDOM.render(<Bigtable />, document.getElementById('mount'));
+import App from './App.js';
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  , document.getElementById('mount'));

@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Sidebar from './Sidebar.js'
-import Mainpage from './Mainpage.js'
 import axios from 'axios'
-import yelpApi from '../controllers/yelpApi'
 import fetch from 'isomorphic-fetch'
+import { Link } from 'react-router-dom';
+
+import Mainpage from './Mainpage.js'
+import yelpApi from '../controllers/yelpApi'
+
+
+// Material UI
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import DrawerOpenRight from './DrawerOpenRight.js'
+
 
 var that;
 class Bigtable extends React.Component {
@@ -13,6 +20,7 @@ class Bigtable extends React.Component {
     super(props);
     this.state = {
       mention: 'Pick',
+      selection: ['SELECTION:'],
       first: 'international',
       second: 'domestic',
       saveit:
@@ -29,12 +37,18 @@ class Bigtable extends React.Component {
       getit: '',
       suggestion: '',
       firstpics: 'https://www.zicasso.com/sites/default/files/styles/original_scaled_down/public/cleanup/sampletrip/Greece_Santorini_Tour_Stairs_in_Santorini.jpg',
-      secondpics: 'https://wallpapertag.com/wallpaper/middle/3/3/f/240898-vertical-las-vegas-wallpaper-1080x1920-notebook.jpg',
+      secondpics: 'https://images.unsplash.com/photo-1429823040067-2c31b1d637ae',
+      opendrawer: false
     };
     this.toggler = this.toggler.bind(this)
     this.toggle = this.toggle.bind(this)
     this.suggest = this.suggest.bind(this)
   }
+
+  
+
+
+
   //SUGGEST FUNC SENDS REQUEST TO YELP API THROUGH YELP ROUTE
   suggest(loc) {
     that = this;
@@ -60,19 +74,21 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "domestic": true },
+          selection: [...this.state.selection, 'Domestic'],
           first: 'cultural',
           second: 'outdoors',
-          firstpics: 'https://i.pinimg.com/564x/3a/94/6e/3a946e1c59d1ba81748bd34c2b44a93d--paris-louvre-le-louvre.jpg',
-          secondpics: 'http://37.media.tumblr.com/3dee2844ff514e61a853c7a4e8dc7afa/tumblr_nag86fNEz11rub0hvo1_500.png'
+          firstpics: 'https://images.unsplash.com/photo-1496393572465-93db1206b7c5',
+          secondpics: 'https://images.unsplash.com/photo-1501028932887-da5de53af865'
         })
     }
     if (this.state.second === 'outdoors') {
       this.setState(
         {
           saveit: { ...this.state.saveit, "outdoors": true },
+          selection: [...this.state.selection, 'Outdoors'],         
           first: 'warm',
           second: 'cold',
-          firstpics: 'http://40.media.tumblr.com/7085a89f414bbacc99c5304711181092/tumblr_nsh92oLqhF1ro3fdho1_500.jpg',
+          firstpics: 'https://images.unsplash.com/photo-1505388944068-75420a859303',
           secondpics: 'https://i.pinimg.com/736x/48/5e/23/485e2315368eacc660b9fe54ba45db1c--snow-covered-trees-winter-trees.jpg'
         })
     }
@@ -80,6 +96,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "cold": true },
+          selection: [...this.state.selection, 'Cold'],          
           first: 'wine',
           second: 'beer',
           firstpics: 'https://www.homemadeinterest.com/wp-content/uploads/2015/11/Wine-Pairing-Party_vertical-wine-bottles.jpg',
@@ -90,10 +107,10 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "beer": true },
-
+          selection: [...this.state.selection, 'Beer'],          
           mention: 'You should travel to...',
-          first: 'thanks',
-          second: 'thanks',
+          first: '',
+          second: '',
           firstpics: 'http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg',
           secondpics: 'http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg'
 
@@ -126,10 +143,11 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "international": true },
+          selection: [...this.state.selection, 'International'],          
           first: 'cultural',
           second: 'outdoors',
-          firstpics: 'https://i.pinimg.com/564x/3a/94/6e/3a946e1c59d1ba81748bd34c2b44a93d--paris-louvre-le-louvre.jpg',
-          secondpics: 'http://37.media.tumblr.com/3dee2844ff514e61a853c7a4e8dc7afa/tumblr_nag86fNEz11rub0hvo1_500.png'
+          firstpics: 'https://images.unsplash.com/photo-1496393572465-93db1206b7c5',
+          secondpics: 'https://images.unsplash.com/photo-1501028932887-da5de53af865'
         })
 
     }
@@ -137,9 +155,10 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, 'cultural': true },
+          selection: [...this.state.selection, 'Culteral'],          
           first: 'warm',
           second: 'cold',
-          firstpics: 'http://40.media.tumblr.com/7085a89f414bbacc99c5304711181092/tumblr_nsh92oLqhF1ro3fdho1_500.jpg',
+          firstpics: 'https://images.unsplash.com/photo-1505388944068-75420a859303',
           secondpics: 'https://i.pinimg.com/736x/48/5e/23/485e2315368eacc660b9fe54ba45db1c--snow-covered-trees-winter-trees.jpg'
         })
     }
@@ -147,6 +166,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, 'warm': true },
+          selection: [...this.state.selection, 'Warm'],          
           first: 'wine',
           second: 'beer',
           firstpics: 'https://www.homemadeinterest.com/wp-content/uploads/2015/11/Wine-Pairing-Party_vertical-wine-bottles.jpg',
@@ -157,6 +177,7 @@ class Bigtable extends React.Component {
       this.setState(
         {
           saveit: { ...this.state.saveit, "wine": true },
+          selection: [...this.state.selection, 'Wine'],          
           mention: 'You should travel to...',
           first: 'thanks',
           second: 'thanks',
@@ -181,8 +202,8 @@ class Bigtable extends React.Component {
         {
           saveit: { ...this.state.saveit, "wine": true },
           mention: 'Thank you!',
-          first: 'thanks',
-          second: 'thanks',
+          first: '',
+          second: '',
           firstpics: "http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg",
           secondpics: "http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-2.jpg"
         })
@@ -207,9 +228,10 @@ class Bigtable extends React.Component {
   }
 
   render() {
+    console.log(this.state.selection);
+
     return (
       <div id='Bigtable'>
-        <Sidebar />
         <Mainpage
           mention={this.state.mention}
           first={this.state.first}
@@ -222,6 +244,8 @@ class Bigtable extends React.Component {
           suggest={this.suggest}
           suggestions={this.state.suggestion}
         />
+        <DrawerOpenRight selection={this.state.selection}/>
+
       </div>
     )
   }

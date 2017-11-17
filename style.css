@@ -2,29 +2,33 @@ body {
     margin:0;
     padding:0;
 }
+#logo {
+    width: 500;
+    height: 500;
+}
 #mount {
     width:100%;
-    height:2200px;
+    height:100%;
 }
 #Bigtable {
     width:100%;
-    height:2200px;
+    height:100%;
     
 }
-#Sidebar {
+/* #Sidebar {
     width:18%;
     height:650px;
     float:left;
     position:fixed;
-    }
+    } */
 
  #logo {
     margin-left:30px;
     }
-
+    
 #Mainpage {
-    width:82%;
-    height:2200px;
+    width:100%;
+    height:100%;
     float:right;
 }
 #righthalf {
@@ -36,7 +40,7 @@ body {
 }
 #lefthalf{
     float:left;
-    width:50%;
+    width:100%;
     height:100%;
     margin:0;
     position:fixed;
@@ -65,8 +69,8 @@ body {
     height:50px;
 }
 .picone {
-    width:31%;
-    height:100%;
+    width:49%;
+    height:auto;
     float:left;
     cursor: hand;
     position:relative;
@@ -78,14 +82,16 @@ body {
     opacity:0.5;
 }
 .picthree {
-    width:20%;
+    /* width:20%; */
     height:100%;
     background-color:white;
-    float:left;
-    display:block;
+    float:none;
+    /* display:block; */
 }
 .pictwo {
-    width:31%;
+    width:49%;
+    height: auto;
+    float: right;
     height:100%;
     cursor: hand;
     position:relative;
@@ -101,23 +107,26 @@ body {
     font-family: sans-serif;    
     color:#919191;
     text-align:center;
-    margin-top:295px;
+    margin-top:10px;
 
     }
 .imgfirst{
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%; 
 }
 .txtpic{
     z-index:100;
     position:absolute; 
-    font-size:28px;
+    /* font-size:100px; */
+    font-size:5vw;
     text-align:center;
     color:white;
     font-family: sans-serif;    
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-shadow: 3px 3px darkgrey;
+    
 }
 .result {
     width:100%;
@@ -175,4 +184,7 @@ button:hover {
     margin: 10px;
     background: #D2D7D3;
     color: #919191;
+}
+.loginn {
+    text-align:center;
 }

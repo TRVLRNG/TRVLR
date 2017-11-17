@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import Threeimgs from './Threeimgs.js';
-import Suggestions from './Suggestions.js';
+// import Suggestions from './Suggestions.js';
 
 class Mainpage extends React.Component {
 
@@ -22,6 +24,7 @@ class Mainpage extends React.Component {
       <div id='Mainpage'>
         <Threeimgs
           mention={this.props.mention}
+          selection={this.props.selection}
           first={this.props.first}
           second={this.props.second}
           toggle={this.props.toggle}
@@ -29,7 +32,8 @@ class Mainpage extends React.Component {
           firstpics={this.props.firstpics}
           secondpics={this.props.secondpics}
         />
-        <div id='Righthalf'>
+
+        {/* <div id='Righthalf'>
           {result}
           {console.log('suggestion props: ', this.props.suggestions)}
           {
@@ -37,7 +41,7 @@ class Mainpage extends React.Component {
             this.props.suggestions &&
             <Suggestions data={this.props.suggestions} />
           }
-        </div>
+        </div> */}
       </div>
     )
   }
