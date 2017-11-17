@@ -12,13 +12,13 @@ const userController = require('./server-mongoose/controllers/userController');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://pinkfairyarmadillo:pinkfairyarmadillo@ds121535.mlab.com:21535/pinkfairyarmadillo');
+// mongoose.connect('mongodb://pinkfairyarmadillo:pinkfairyarmadillo@ds121535.mlab.com:21535/pinkfairyarmadillo');
 
 
-mongoose.connection.once('open', (err, success) => {
-  if (err) console.log('NOOOOOOOO');
-  console.log('CONNECTED YAYYYYY');
-})
+// mongoose.connection.once('open', (err, success) => {
+//   if (err) console.log('NOOOOOOOO');
+//   console.log('CONNECTED YAYYYYY');
+// })
 // then(
 //   () => {console.log('SUCCESSFULLY CONNECTED!')},
 //   err => {console.log('ERROR CONNECTING')}

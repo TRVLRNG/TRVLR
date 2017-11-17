@@ -48,8 +48,6 @@ userController.login = (req,res) => {
         }
         if(find) {
             res.cookie('USERID', find._id)            
-
-
             res.send(find)
         }
         if(!find) {
